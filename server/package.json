@@ -1,0 +1,25 @@
+{
+  "name": "devmeet",
+  "version": "1.0.0",
+  "description": "A real-time collaborative coding platform",
+  "homepage": "https://github.com/NagenderSingh954/DevMeet#readme",
+  "bugs": {
+    "url": "https://github.com/NagenderSingh954/DevMeet/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NagenderSingh954/DevMeet.git"
+  },
+  "license": "ISC",
+  "author": "Nagender Singh",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0"
+  }
+}
