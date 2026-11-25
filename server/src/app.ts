@@ -6,6 +6,7 @@ import cors from "cors";
 import { ApiResponce } from './utils/ApiResponce.ts';
 import { corsOptions } from './constant/config.ts';
 import { disconnect } from 'cluster';
+import { ROOM_EVENTS } from './constant/socketEvent.ts';
 
 
 const app = express()
@@ -45,7 +46,7 @@ io.on("connection", (socket) => {
 
     console.log("User Connected to teh site ", socket.id)
 
-    socket.on("create-room", ({ name, roomId }) => {
+    socket.on(ROOM_EVENTS.CREATE_ROOM, ({ name, roomId }) => {
         socket.join(roomId);
 
         console.log(`${name} created room: ${roomId}`);
@@ -57,7 +58,7 @@ io.on("connection", (socket) => {
         });
     });
 
-    socket.on("join-room", ({ name, roomId }) => {
+    socket.on(ROOM_EVENTS.JOIN_ROOM, ({ name, roomId }) => {
         socket.join(roomId);
 
         console.log(`${name} joined room: ${roomId}`);

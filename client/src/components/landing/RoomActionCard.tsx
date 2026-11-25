@@ -30,7 +30,7 @@ const SAMPLE_NAMES = [
 export const RoomActionCard: React.FC<RoomActionCardProps> = ({ onJoin, onCreate, initialRoomId = '' }) => {
   const [mode, setMode] = useState<'create' | 'join'>(initialRoomId ? 'join' : 'create');
   const [name, setName] = useState('');
-  const [roomId, setRoomId] = useState(initialRoomId || roomIdGenerate());
+  const [roomId, setRoomId] = useState(roomIdGenerate());
   const [copied, setCopied] = useState(false);
   const [micActive, setMicActive] = useState(true);
   const [camActive, setCamActive] = useState(true);
@@ -55,7 +55,7 @@ export const RoomActionCard: React.FC<RoomActionCardProps> = ({ onJoin, onCreate
 
   const handleAction = () => {
     const effectiveName = name.trim() || 'AnonymousDev';
-    const cleanRoomId = roomId.trim().toUpperCase();
+    const cleanRoomId = roomId;
 
     if (!cleanRoomId) {
       setErrorMsg('Please enter or generate a Room ID');
@@ -63,9 +63,9 @@ export const RoomActionCard: React.FC<RoomActionCardProps> = ({ onJoin, onCreate
     }
 
     if (mode === 'create') {
-      onCreate(cleanRoomId, effectiveName);
+      onCreate(effectiveName,cleanRoomId);
     } else {
-      onJoin(cleanRoomId, effectiveName);
+      onJoin(effectiveName,cleanRoomId);
     }
   };
 
@@ -77,12 +77,12 @@ export const RoomActionCard: React.FC<RoomActionCardProps> = ({ onJoin, onCreate
 
   return (
     <div className="relative w-full max-w-md mx-auto">
-      {/* Background glow behind card */}
+    
       <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-indigo-500/30 via-purple-500/30 to-pink-500/30 blur-xl opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
 
       <div className="relative rounded-2xl bg-slate-900/90 border border-slate-800/90 shadow-2xl backdrop-blur-xl p-6 sm:p-7">
 
-        {/* Mode Switcher Tabs */}
+    
         <div className="grid grid-cols-2 p-1 bg-slate-950/70 rounded-xl border border-slate-800/80 mb-6">
           <button
             type="button"
@@ -140,7 +140,6 @@ export const RoomActionCard: React.FC<RoomActionCardProps> = ({ onJoin, onCreate
             </div>
           </div>
 
-          {/* Room ID Field */}
           <div>
             <div className="flex items-center justify-between mb-1.5">
               <label className="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
@@ -230,7 +229,6 @@ export const RoomActionCard: React.FC<RoomActionCardProps> = ({ onJoin, onCreate
             </div>
           )}
 
-          {/* Main Action Submit Button */}
           <button
             type="button"
             onClick={handleAction}

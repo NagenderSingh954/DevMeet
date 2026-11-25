@@ -1,11 +1,70 @@
+"use client"
 import React from 'react'
+
+
+import {
+  Group,
+  Panel,
+  Separator,
+} from "react-resizable-panels";
+import { Navbar } from '../components/roompage/Navbar';
 
 function RoomPage() {
   return (
-     <div className="h-screen flex flex-col bg-[#0b0f19] text-slate-100 overflow-hidden font-sans">
-      <h1>heelo from theroom page </h1>
+    <>
+    <Navbar></Navbar>
+ <div className="h-screen w-full bg-gray-950 p-2 text-white">
 
+      <Group orientation="horizontal">
+
+        <Panel defaultSize="20%" minSize="12%">
+          <div className="h-full rounded-lg bg-gray-900 p-4">
+            textEditor
+          </div>
+        </Panel>
+
+        <Separator className="w-[1px] cursor-col-resize hover:bg-blue-500" />
+
+        <Panel defaultSize="80%" minSize="30%">
+          <Group orientation="vertical">
+
+            <Panel defaultSize="75%" minSize="17%">
+              <Group orientation="horizontal">
+              <Panel defaultSize="50%" minSize="15%">
+                 <div className="h-full rounded-lg bg-gray-900 p-4">
+            textEditor
+          </div>
+              </Panel>
+              <Separator className="w-0.5 cursor-col-resize hover:bg-blue-500" />
+              <Panel defaultSize="50%" minSize="15%">
+                <div className="h-full rounded-lg bg-gray-900 p-4">
+            textEditor
+          </div>
+              </Panel>
+
+              </Group>
+            </Panel>
+
+            <Separator className="h-0.5 cursor-col-resize hover:bg-blue-500" />
+
+            <Panel defaultSize="25%" minSize="17%">
+              <div className="h-full rounded-lg bg-gray-800 p-4">
+                Terminal
+              </div>
+            </Panel>
+
+          </Group>
+        </Panel>
+        <Separator className="w-0.5 cursor-col-resize hover:bg-blue-500" />
+        <Panel defaultSize="20%" minSize="12%">
+          <div className="h-full rounded-lg bg-gray-900 p-4">
+            Participants
+          </div>
+        </Panel>
+
+      </Group>
     </div>
+    </>
   )
 }
 

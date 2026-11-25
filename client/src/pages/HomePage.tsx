@@ -15,23 +15,46 @@ import {
   Zap
 } from 'lucide-react';
 import roomIdGenerate from '../utils/roomcreation.ts';
+import socket from '../utils/socket.ts';
+import { ROOM_EVENTS } from '../constent/socketEvent.ts';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const actionCardRef = useRef<HTMLDivElement>(null);
 
-  const handleCreateRoom = (roomId: string, name: string) => {
-    // Store user name for session persistence
+  const handleCreateRoom = (name: string,roomId:string) => {
+     if (!roomId.trim() || !name.trim()) {
+        alert("Room ID and username are required");
+        return;
+    }
+
     sessionStorage.setItem('devmeet_username', name);
     sessionStorage.setItem('devmeet_role', 'host');
+
+    socket.connect();
+    socket.emit(ROOM_EVENTS.CREATE_ROOM,{
+     name,
+     roomId
+    })
+
+
+
+
     navigate(`/room/${roomId}`, { state: { name, isHost: true } });
   };
 
-  const handleJoinRoom = (roomId: string, name: string) => {
-    sessionStorage.setItem('devmeet_username', name);
-    sessionStorage.setItem('devmeet_role', 'peer');
-    navigate(`/room/${roomId}`, { state: { name, isHost: false } });
-  };
+const handleJoinRoom = (name: string,roomId:string) => {
+
+    if (!roomId.trim() || !name.trim()) {
+        alert("Room ID and username are required");
+        return;
+    }
+
+    socket.emit(ROOM_EVENTS.JOIN_ROOM,{
+      name,
+      roomId
+    })
+};
 
   const handleQuickDemo = () => {
     const demoId = roomIdGenerate();
