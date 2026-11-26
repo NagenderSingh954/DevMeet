@@ -1,0 +1,76 @@
+
+
+.editor-container {
+  width: 100%;
+  min-width: 0;
+  container-type: inline-size;
+  container-name: editor;
+}
+
+.responsive-toolbar {
+  display: flex;
+  flex-wrap: wrap !important;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  height: auto !important;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.responsive-toolbar > * {
+  flex-shrink: 0;
+}
+
+
+@container editor (max-width: 600px) {
+  .responsive-toolbar {
+    gap: 4px;
+    padding: 6px;
+  }
+}
+
+
+@container editor (max-width: 400px) {
+  .responsive-toolbar {
+    gap: 3px;
+    padding: 5px;
+  }
+}
+
+
+
+.dark-theme .mdxeditor-toolbar [role="combobox"] {
+  background-color: #1e1e1e !important;
+  color: #d4d4d4 !important;
+  border: 1px solid #3c3c3c;
+  border-radius: 6px;
+}
+
+
+.dark-theme .mdxeditor-toolbar [role="combobox"]:hover {
+  background-color: #333333 !important;
+}
+
+.dark-theme [role="listbox"] {
+  background-color: #252526 !important;
+  color: #d4d4d4 !important;
+  border: 1px solid #3c3c3c;
+}
+
+.dark-theme [role="option"] {
+  color: #d4d4d4 !important;
+}
+
+.dark-theme [role="option"]:hover {
+  background-color: #3e3e42 !important;
+}
+.mdxeditor-popup-container [role="tooltip"] {
+  background: #252526 !important;
+  color: #ffffff !important;
+  border: 1px solid #3c3c3c !important;
+  border-radius: 6px !important;
+  padding: 6px 10px !important;
+  font-size: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+}
