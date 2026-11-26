@@ -51,8 +51,8 @@ function NotePad() {
     <div>
       <EtitorWrapper>
         <MDXEditor
-          className='dark-theme flex-1  bg-[#252526]'
-          markdown="hello"
+          className='dark-theme flex-1  bg-[#252526] '
+          markdown=""
           placeholder="All the Perticipant can write Here "
           plugins={[
             // Basic formatting

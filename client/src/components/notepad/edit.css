@@ -74,3 +74,55 @@
   font-size: 12px !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
 }
+
+
+
+.mdxeditor [contenteditable="true"] ul {
+  list-style-type: disc !important;
+  padding-left: 1.5rem !important;
+  margin: 0.5rem 0 !important;
+}
+
+/* Ordered list */
+.mdxeditor [contenteditable="true"] ol {
+  list-style-type: decimal !important;
+  padding-left: 1.5rem !important;
+  margin: 0.5rem 0 !important;
+}
+
+/* List items */
+.mdxeditor [contenteditable="true"] li {
+  /* display: list-item !important; */
+  padding-left: 0.25rem;
+}
+
+/* Nested unordered lists */
+.mdxeditor [contenteditable="true"] ul ul {
+  list-style-type: circle !important;
+}
+
+/* Nested ordered lists */
+.mdxeditor [contenteditable="true"] ol ol {
+  list-style-type: lower-alpha !important;
+}
+
+/* Checklist item layout */
+.mdxeditor [contenteditable="true"] li:has(input[type="checkbox"]) {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+/* Prevent checkbox from overlapping text */
+.mdxeditor [contenteditable="true"] li input[type="checkbox"] {
+  position: static !important;
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+/* Keep text beside checkbox */
+.mdxeditor [contenteditable="true"] li:has(input[type="checkbox"]) > * {
+  flex: 1;
+  min-width: 0;
+}
