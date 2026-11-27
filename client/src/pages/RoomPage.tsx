@@ -12,6 +12,7 @@ import Notepad from '../components/notepad/Notepad.tsx';
 import MonacoEditor from '../components/editor';
 import Preview from '../components/preview/index.tsx';
 import HtmlProvider from '../context/Providet.tsx';
+import Terminal from '../components/Terminal.tsx';
 
 function RoomPage() {
   return (
@@ -55,8 +56,8 @@ function RoomPage() {
               <Separator className="h-0.5 cursor-col-resize hover:bg-blue-500" />
 
               <Panel defaultSize="25%" minSize="17%">
-                <div className="h-full rounded-lg bg-gray-800 p-4">
-                  Terminal
+                <div className="h-full rounded-lg bg-gray-800">
+                 <Terminal/>
                 </div>
               </Panel>
           </HtmlProvider>
